@@ -17,8 +17,6 @@ class _LogInState extends State<LogIn> {
   String password = '';
   BuildContext scaffoldContext;
 
-
-
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   @override
@@ -89,6 +87,7 @@ class _LogInState extends State<LogIn> {
                                     height: 15,
                                   ),
                                   TextFormField(
+                                    obscureText: true,
                                     decoration: inputDecoration()
                                         .copyWith(hintText: "Password"),
                                     controller: passwordController,

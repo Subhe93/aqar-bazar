@@ -88,6 +88,7 @@ class _SignUpState extends State<SignUp> {
                                     height: 15,
                                   ),
                                   TextFormField(
+                                    obscureText: true,
                                     decoration: inputDecoration()
                                         .copyWith(hintText: "Password"),
                                   ),

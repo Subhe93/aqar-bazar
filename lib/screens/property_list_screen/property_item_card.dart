@@ -2,19 +2,15 @@ import 'package:aqar_bazar/screens/filter/search_result_model.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-Widget propertyCard(BuildContext context,Datum propertyItem) {
-
-
- var price = propertyItem.price;
- var width = MediaQuery.of(context).size.width;
- var height = MediaQuery.of(context).size.height;
+Widget propertyCard(BuildContext context, Datum propertyItem) {
+  var price = propertyItem.price;
+  var width = MediaQuery.of(context).size.width;
+  var height = MediaQuery.of(context).size.height;
 
   return Container(
-
-    height: 165,
+    height: height / 5.5,
     child: ClipRRect(
       borderRadius: BorderRadius.circular(15),
-
       child: Container(
         decoration: new BoxDecoration(
           boxShadow: [
@@ -34,23 +30,25 @@ Widget propertyCard(BuildContext context,Datum propertyItem) {
           child: Row(
             children: [
               Container(
-                height: 165,
+                height: height / 5.5,
                 width: width * 0.3,
                 child: FittedBox(
                     fit: BoxFit.fill,
-
                     child: Image.network(propertyItem.thumbnail)),
               ),
               SizedBox(
                 width: 10,
               ),
               Container(
-                width: width*0.4,
+                width: width * 0.4,
                 child: Column(
-
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(propertyItem.title),
+                    Text(
+                      propertyItem.title,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
 
                     Text(propertyItem.address),
                     // Row(children: [
@@ -60,35 +58,30 @@ Widget propertyCard(BuildContext context,Datum propertyItem) {
                     //   Text("2")
                     // ],),
                     SmoothStarRating(
-
                         allowHalfRating: false,
-                        onRated: (v) {
-                        },
+                        onRated: (v) {},
                         starCount: 5,
                         rating: propertyItem.rate.toDouble(),
                         size: 20.0,
-                        isReadOnly:true,
+                        isReadOnly: true,
                         color: Colors.blue,
                         borderColor: Colors.blue,
-                        spacing:0.0
-                    )
-
-
+                        spacing: 0.0)
                   ],
                 ),
               ),
               Spacer(),
               Padding(
-
-                padding: const EdgeInsets.all(8.0),
-                child: Text(" \$$price",style: TextStyle(fontSize: 20,color: Colors.green),),
+                padding: const EdgeInsets.only(right: 2.0),
+                child: Text(
+                  " \$$price",
+                  style: TextStyle(fontSize: 20, color: Colors.green),
+                ),
               )
             ],
           ),
         ),
       ),
-
-
     ),
   );
 }
